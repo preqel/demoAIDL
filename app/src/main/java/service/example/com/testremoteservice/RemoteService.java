@@ -8,9 +8,7 @@ import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-/**
- * Created by wyp on 2017/7/28.
- */
+
 
 public class RemoteService extends Service {
 
@@ -20,14 +18,17 @@ public class RemoteService extends Service {
 
         @Override
         public String getInfo() throws RemoteException {
-            return "getInfo are 完全开发讲义";
+            return "我是一个数据来自不同的进程";
         }
 
         @Override
-        public Person getPerson() throws RemoteException {
+        public Person getPerson() throws RemoteException {  //模拟传递一个自定义的复杂类型数据
              Person p =  new Person();
              p.setName("zhangsan");
-            return p;
+             Pet pet = new Pet();
+             pet.setPetname("Kitty");
+             p.setPet(pet);
+             return p;
         }
     }
 
@@ -47,9 +48,5 @@ public class RemoteService extends Service {
     public int onStartCommand(Intent intent,   int flags, int startId) {
         return super.onStartCommand(intent, flags, startId);
     }
-
-    public String getInfo(String name){ return name+"8dfdf";};
-
-
 
 }

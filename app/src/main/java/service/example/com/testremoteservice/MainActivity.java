@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
          btn.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View v) {
-               Log.d("TAG","onClick");
                Intent intent = new Intent(v.getContext(),RemoteService.class);
                 bindService(intent,MainActivity.this, Context.BIND_AUTO_CREATE);
 
@@ -37,8 +36,9 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
            @Override
            public void onClick(View v) {
                try {
-          //         textView.setText(myservice.getInfo());
-                   textView.setText(myservice.getPerson().getName());
+          //         textView.setText(myservice.getInfo());  测试例子
+             //      textView.setText(myservice.getPerson().getName());i 测试例子2
+                   textView.setText(myservice.getPerson().getPet().getPetname());  //测试例子3
                } catch (RemoteException e) {
                    e.printStackTrace();
                }
@@ -52,8 +52,6 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         this.myservice = IRemoteService.Stub.asInterface(service);
-
-
         Log.d("TAG","onServiceConnected");
     }
 
@@ -61,7 +59,5 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
     public void onServiceDisconnected(ComponentName name) {
         Log.d("TAG","onServiceDisconnected");
     }
-
-
 
 }
