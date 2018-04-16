@@ -14,22 +14,22 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements ServiceConnection {
+
     TextView textView;
+
     private IRemoteService myservice = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-         Button btn = (Button) findViewById(R.id.button);
+        Button btn = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.mTextView);
 
-         btn.setOnClickListener(new View.OnClickListener(){
+        btn.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View v) {
-               Intent intent = new Intent(v.getContext(),RemoteService.class);
-                bindService(intent,MainActivity.this, Context.BIND_AUTO_CREATE);
-
-
+               Intent intent = new Intent(v.getContext(), RemoteService.class);
+               bindService(intent, MainActivity.this, Context.BIND_AUTO_CREATE);
            }
        });
        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
