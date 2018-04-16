@@ -13,11 +13,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements ServiceConnection {
 
     TextView textView;
 
     private IRemoteService myservice = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,11 +47,22 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
                } catch (RemoteException e) {
                    e.printStackTrace();
                }
-
            }
        });
-
-
+       findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               List<String> lists = new LinkedList<>();
+               lists.add("abosolue");
+               lists.add("buidfl");
+               lists.add("uief");
+               try {
+                   myservice.getPersonList(lists);
+               }catch (RemoteException remoteexception){
+                   remoteexception.printStackTrace();;
+               }
+           }
+       });
     }
 
     @Override

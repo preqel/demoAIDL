@@ -6,8 +6,9 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
-public class RemoteService extends Service {
+import java.util.List;
 
+public class RemoteService extends Service {
 
     public class MyRemoteServiceImpl extends IRemoteService.Stub{
 
@@ -26,6 +27,18 @@ public class RemoteService extends Service {
              p.setPet(pet);
              return p;
         }
+
+        @Override
+        public String getPersonList(List<String> lists) throws RemoteException {
+
+            for (int i = 0; i < lists.size(); i++) {
+                String temp = lists.get(i);
+                Log.d("TAG", "getPersonList" + lists.get(i));
+            }
+            return lists.get(0);
+        }
+
+
     }
 
     @Override

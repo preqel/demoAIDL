@@ -8,5 +8,5 @@ interface IRemoteService {
 
     String getInfo();
     Person getPerson();
-
+    String getPersonList(in List<String> lists);
 }

@@ -5,16 +5,20 @@ import android.os.Parcelable;
 
 
 
-public class Person  implements Parcelable{
+public class Person implements Parcelable{
+
     private String name;
     private Pet pet;   //嵌套一个其他类
-
 
     protected Person(Parcel in) {
         name = in.readString();
         pet = in.readParcelable(Pet.class.getClassLoader());   //这里增加了对其他序列化类的读取
     }
-    public Person(){};
+
+    public Person() {
+    }
+
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);

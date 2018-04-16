@@ -25,4 +25,8 @@
         android:layout_width="wrap_content" android:text="getInfo"
         android:layout_height="wrap_content" android:id="@+id/button2"/>
 
+    <Button
+        android:layout_width="wrap_content" android:text="getPersonList"
+        android:layout_height="wrap_content" android:id="@+id/button3"/>
+
 </LinearLayout>
